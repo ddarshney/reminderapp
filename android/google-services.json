@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "490048910069",
+    "project_id": "remind-me-app-27a76",
+    "storage_bucket": "remind-me-app-27a76.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:490048910069:android:a28dc057d45a8eb656cbbc",
+        "android_client_info": {
+          "package_name": "com.example.remindmeapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "490048910069-hcupre0h6vdu9iueipj47bfck0q6be7m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRgI3Gcgh9OXbzjMQXq2MvSNRoJqTnxy0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "490048910069-hcupre0h6vdu9iueipj47bfck0q6be7m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
