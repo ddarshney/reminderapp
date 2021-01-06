@@ -8,13 +8,13 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Remind Me App'),
-        backgroundColor: Colors.blue[300],
+        title: Text('REMIND ME APP'),
+        backgroundColor: Colors.green,
         elevation: 0.0,
         actions: <Widget>[
           FlatButton.icon(
             icon: Icon(Icons.person),
-            label: Text('Logout'),
+            label: Text('LOGOUT'),
             onPressed: () async {
               await _auth.signOut();
             },
@@ -25,3 +25,4 @@ class Home extends StatelessWidget {
     );
   }
 }
+
