@@ -23,104 +23,112 @@ class _RegisterState extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.blue[100],
+    return new Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue[400],
-        elevation: 0.0,
-        title: Text('Sign up to Remind Me App'),
+        backgroundColor: Colors.green,
+        elevation: 10.0,
         actions: <Widget>[
           FlatButton.icon(
             icon: Icon(Icons.person),
-            label: Text('Sign In'),
+            label: Text('SIGN IN',
+              style:TextStyle(fontWeight: FontWeight.bold,
+
+              ),),
             onPressed: () => widget.toggleView(),
           ),
         ],
       ),
-      body: Container(
-        padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 60.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: <Widget>[
-              SizedBox(height: 15.0),
-              TextFormField(
-                decoration: InputDecoration(
-                    icon: Icon(Icons.person),
-                    labelText: 'Enter your e-mail ID'),
-                validator: (val) => val.isEmpty ? 'No e-mail ID entered' : null,
-                onChanged: (val) {
-                  setState(() => email = val);
-                },
-              ),
-              SizedBox(height: 15.0),
-              TextFormField(
-                decoration: InputDecoration(
-                    icon: Icon(Icons.lock),
-                    labelText: 'Enter your desired password'),
-                obscureText: true,
-                validator: (val) => val.length < 6
-                    ? 'Enter a password with 6 or more characters'
-                    : null,
-                onChanged: (val) {
-                  setState(() => password = val);
-                },
-              ),
-              ListTile(
-                title: const Text('Student'),
-                leading: Radio(
-                  activeColor: Colors.red,
-                  hoverColor: Colors.red,
-                  value: SingingCharacter.student,
-                  groupValue: _character,
-                  onChanged: (SingingCharacter value) {
-                    setState(() {
-                      _character = value;
-                    });
-                  },
+      resizeToAvoidBottomPadding: false,
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            child: Stack(
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.fromLTRB(15.0, 100.0, 0.0, 0.0),
+                  child: Text('Sign',
+                      style: TextStyle(fontSize: 80.0, fontWeight: FontWeight.bold)),
                 ),
-              ),
-              ListTile(
-                title: const Text('Club'),
-                leading: Radio(
-                  activeColor: Colors.red,
-                  hoverColor: Colors.red,
-                  focusColor: Colors.red,
-                  value: SingingCharacter.clubmember,
-                  groupValue: _character,
-                  onChanged: (SingingCharacter value) {
-                    setState(() {
-                      _character = value;
-                    });
-                  },
+                Container(
+                  padding: EdgeInsets.fromLTRB(18.0, 175.0, 0.0, 0.0),
+                  child: Text('Up',
+                      style: TextStyle(fontSize: 80.0, fontWeight: FontWeight.bold)),
                 ),
-              ),
-              SizedBox(height: 15.0),
-              RaisedButton(
-                  color: Colors.blue[400],
-                  child: Text(
-                    'Register',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  onPressed: () async {
-                    if (_formKey.currentState.validate()) {
-                      dynamic result = await _auth.registerwithemailpassword(
-                          email, password);
-                      if (result == null) {
-                        setState(() {
-                          error = 'Please enter a valid e-mail';
-                        });
-                      }
-                    }
-                  }),
-              SizedBox(height: 20.0),
-              Text(
-                error,
-                style: TextStyle(color: Colors.red, fontSize: 15.0),
-              )
-            ],
+                Container(
+                  padding: EdgeInsets.fromLTRB(110.0, 175.0, 0.0, 0.0),
+                  child: Text('.',
+                      style: TextStyle(fontSize: 80.0,fontWeight: FontWeight.bold,color: Colors.green)),
+                )
+              ],
+            ),
           ),
-        ),
+          Container(
+            padding: EdgeInsets.only(top: 35.0, left: 20.0, right: 20.0),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(
+                        icon: Icon(Icons.person),
+                        labelText: 'E-MAIL',
+                        labelStyle:TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.grey),
+                        focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.green))),
+                    validator: (val) => val.isEmpty ? 'NO E-MAIL ID ENTERED' : null,
+                    onChanged: (val) {
+                      setState(() => email = val);
+                    },
+                  ),
+                  SizedBox(height: 30.0),
+                  TextFormField(
+                    decoration: InputDecoration(
+                        icon: Icon(Icons.lock), labelText: 'PASSWORD',
+                        labelStyle:TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.grey),
+                        focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.green))),
+                    obscureText: true,
+                    validator: (val) => val.length < 6
+                        ? 'PASSWORD SHOULD HAVE 6 OR MORE CHARACTERS'
+                        : null,
+                    onChanged: (val) {
+                      setState(() => password = val);
+                    },
+                  ),
+                  SizedBox(height: 20.0),
+                  RaisedButton(
+                      color: Colors.green,
+                      child: Text(
+                        'SIGN UP',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      onPressed: () async {
+                        if (_formKey.currentState.validate()) {
+                          dynamic result =
+                          await _auth.registerwithemailpassword(email, password);
+                          if (result == null) {
+                            setState(() {
+                              error = 'ERROR SIGNING UP';
+                            });
+                          }
+                        }
+                      }),
+
+                  Text(
+                    error,
+                    style: TextStyle(color: Colors.red, fontSize: 15.0),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
