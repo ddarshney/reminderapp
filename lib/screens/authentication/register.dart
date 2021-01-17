@@ -46,17 +46,17 @@ class _RegisterState extends State<Register> {
             child: Stack(
               children: <Widget>[
                 Container(
-                  padding: EdgeInsets.fromLTRB(15.0, 100.0, 0.0, 0.0),
+                  padding: EdgeInsets.fromLTRB(15.0, 50.0, 0.0, 0.0),
                   child: Text('Sign',
                       style: TextStyle(fontSize: 80.0, fontWeight: FontWeight.bold)),
                 ),
                 Container(
-                  padding: EdgeInsets.fromLTRB(18.0, 175.0, 0.0, 0.0),
+                  padding: EdgeInsets.fromLTRB(18.0, 125.0, 0.0, 0.0),
                   child: Text('Up',
                       style: TextStyle(fontSize: 80.0, fontWeight: FontWeight.bold)),
                 ),
                 Container(
-                  padding: EdgeInsets.fromLTRB(110.0, 175.0, 0.0, 0.0),
+                  padding: EdgeInsets.fromLTRB(110.0, 125.0, 0.0, 0.0),
                   child: Text('.',
                       style: TextStyle(fontSize: 80.0,fontWeight: FontWeight.bold,color: Colors.green)),
                 )
@@ -64,13 +64,13 @@ class _RegisterState extends State<Register> {
             ),
           ),
           Container(
-            padding: EdgeInsets.only(top: 35.0, left: 20.0, right: 20.0),
+            padding: EdgeInsets.only(top: 15.0, left: 20.0, right: 20.0),
             child: Form(
               key: _formKey,
               child: Column(
                 children: <Widget>[
                   SizedBox(
-                    height: 20.0,
+                    height: 10.0,
                   ),
                   TextFormField(
                     decoration: InputDecoration(
@@ -102,6 +102,32 @@ class _RegisterState extends State<Register> {
                     },
                   ),
                   SizedBox(height: 20.0),
+                  ListTile(
+                    title: const Text('CLUB'),
+                    leading: Radio(
+                      activeColor: Colors.green,
+                      value:SingingCharacter.clubmember,
+                      groupValue: _character,
+                      onChanged: (SingingCharacter value){
+                        setState(() {
+                          _character=value;
+                        });
+                      },
+                    ),
+                  ),
+                  ListTile(
+                    title:const Text('STUDENT'),
+                    leading: Radio(
+                      activeColor: Colors.green,
+                      value:SingingCharacter.student,
+                      groupValue: _character,
+                      onChanged: (SingingCharacter value){
+                        setState(() {
+                          _character=value;
+                        });
+                      },
+                    ),
+                  ),
                   RaisedButton(
                       color: Colors.green,
                       child: Text(
@@ -119,7 +145,6 @@ class _RegisterState extends State<Register> {
                           }
                         }
                       }),
-
                   Text(
                     error,
                     style: TextStyle(color: Colors.red, fontSize: 15.0),
