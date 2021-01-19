@@ -1,10 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:remindmeapp/models/user_data.dart';
+import 'package:remindmeapp/screens/authentication/register.dart';
+import 'database.dart';
 
 class AuthService {
   //_ in the beginning means private prop
   final FirebaseAuth _auth = FirebaseAuth.instance;
   //anonymous sign in using future ie it appears later
+  
   //create user object based on firebased user
   TheUser _fromFirebaseUser(User user) {
     return user != null ? TheUser(uid: user.uid) : null;
@@ -41,11 +44,12 @@ class AuthService {
   }
 
   //register
-  Future registerwithemailpassword(String email, String password) async {
+  Future registerwithemailpassword(String email, String password,String grpVal) async {
     try {
       UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       User user = result.user;
+      await DatabaseService(uid: user.uid).updateUserData(grpVal,email);
       return _fromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
