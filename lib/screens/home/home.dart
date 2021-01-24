@@ -25,7 +25,7 @@ class Home extends StatelessWidget {
             )
           ],
         ),
-          backgroundColor: Colors.blue[50],
+          backgroundColor: Colors.white,
         body: UserList(),
         )
     );
