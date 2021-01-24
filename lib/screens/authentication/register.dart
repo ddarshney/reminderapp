@@ -47,17 +47,17 @@ class _RegisterState extends State<Register> {
             child: Stack(
               children: <Widget>[
                 Container(
-                  padding: EdgeInsets.fromLTRB(15.0, 100.0, 0.0, 0.0),
+                  padding: EdgeInsets.fromLTRB(15.0, 60.0, 0.0, 0.0),
                   child: Text('Sign',
                       style: TextStyle(fontSize: 80.0, fontWeight: FontWeight.bold)),
                 ),
                 Container(
-                  padding: EdgeInsets.fromLTRB(18.0, 175.0, 0.0, 0.0),
+                  padding: EdgeInsets.fromLTRB(18.0, 145.0, 0.0, 0.0),
                   child: Text('Up',
                       style: TextStyle(fontSize: 80.0, fontWeight: FontWeight.bold)),
                 ),
                 Container(
-                  padding: EdgeInsets.fromLTRB(110.0, 175.0, 0.0, 0.0),
+                  padding: EdgeInsets.fromLTRB(110.0, 135.0, 0.0, 0.0),
                   child: Text('.',
                       style: TextStyle(fontSize: 80.0,fontWeight: FontWeight.bold,color: Colors.green)),
                 )
@@ -65,13 +65,13 @@ class _RegisterState extends State<Register> {
             ),
           ),
           Container(
-            padding: EdgeInsets.only(top: 35.0, left: 20.0, right: 20.0),
+            padding: EdgeInsets.only(top: 5.0, left: 20.0, right: 20.0),
             child: Form(
               key: _formKey,
               child: Column(
                 children: <Widget>[
                   SizedBox(
-                    height: 20.0,
+                    height: 10.0,
                   ),
                   TextFormField(
                     decoration: InputDecoration(
@@ -86,7 +86,7 @@ class _RegisterState extends State<Register> {
                       setState(() => email = val);
                     },
                   ),
-                  SizedBox(height: 30.0),
+                  SizedBox(height: 20.0),
                   TextFormField(
                     decoration: InputDecoration(
                         icon: Icon(Icons.lock), labelText: 'PASSWORD',
