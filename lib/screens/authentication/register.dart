@@ -20,6 +20,7 @@ class _RegisterState extends State<Register> {
   // text field state
   String email = '';
   String password = '';
+  String type='Student';
 
   @override
   Widget build(BuildContext context) {
@@ -102,6 +103,32 @@ class _RegisterState extends State<Register> {
                     },
                   ),
                   SizedBox(height: 20.0),
+                  ListTile(
+                    title: const Text('STUDENT'),
+                    leading: Radio(
+                      value: SingingCharacter.student,
+                      groupValue: _character,
+                      onChanged: (SingingCharacter value) {
+                        setState(() {
+
+                          _character = value;
+                        });
+                      },
+                    ),
+                  ),
+                  ListTile(
+                    title: const Text('CLUB MEMBER'),
+                    leading: Radio(
+                      value: SingingCharacter.clubmember,
+                      groupValue: _character,
+                      onChanged: (SingingCharacter value) {
+                        setState(() {
+                          type='Club member';
+                          _character = value;
+                        });
+                      },
+                    ),
+                  ),
                   RaisedButton(
                       color: Colors.green,
                       child: Text(
@@ -111,7 +138,7 @@ class _RegisterState extends State<Register> {
                       onPressed: () async {
                         if (_formKey.currentState.validate()) {
                           dynamic result =
-                          await _auth.registerwithemailpassword(email, password);
+                          await _auth.registerwithemailpassword(email, password,type);
                           if (result == null) {
                             setState(() {
                               error = 'ERROR SIGNING UP';
