@@ -12,7 +12,7 @@ class Home extends StatelessWidget {
         value: DatabaseService().users,
         child:Scaffold(
           appBar: AppBar(
-          title: Text('REMIND ME APP'),
+          title: Text('HOME'),
           backgroundColor: Colors.green,
           elevation: 0.0,
           actions: <Widget>[

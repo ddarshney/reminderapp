@@ -10,17 +10,17 @@ class Register extends StatefulWidget {
 }
 
 enum SingingCharacter { clubmember, student }
-SingingCharacter _character = SingingCharacter.clubmember;
+
 
 class _RegisterState extends State<Register> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
+  SingingCharacter _character = SingingCharacter.student;
   String error = '';
 
   // text field state
   String email = '';
   String password = '';
-  String type='Student';
 
   @override
   Widget build(BuildContext context) {
@@ -110,7 +110,6 @@ class _RegisterState extends State<Register> {
                       groupValue: _character,
                       onChanged: (SingingCharacter value) {
                         setState(() {
-
                           _character = value;
                         });
                       },
@@ -123,7 +122,6 @@ class _RegisterState extends State<Register> {
                       groupValue: _character,
                       onChanged: (SingingCharacter value) {
                         setState(() {
-                          type = 'Club member';
                           _character = value;
                         });
                       },
@@ -137,6 +135,7 @@ class _RegisterState extends State<Register> {
                       ),
                       onPressed: () async {
                         if (_formKey.currentState.validate()) {
+                          final type= (_character==SingingCharacter.student)? "Student" : "Club member";
                           dynamic result =
                           await _auth.registerwithemailpassword(email, password,type);
                           if (result == null) {
