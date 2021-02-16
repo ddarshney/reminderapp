@@ -1,19 +1,36 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:remindmeapp/screens/authentication/authentication.dart';
 import 'package:provider/provider.dart';
 // ignore: unused_import
 import 'package:remindmeapp/screens/home/home.dart';
 import 'package:remindmeapp/models/user_data.dart';
+import 'package:remindmeapp/screens/home/Club.dart';
 
 class Wrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // return either home or authentication
     final user = Provider.of<TheUser>(context);
-    print(user);
     if (user == null)
       return Authenticate();
     else
-      return Home();
+      return StreamBuilder(
+          stream: FirebaseFirestore.instance.collection("users")
+              .doc(user.uid)
+              .snapshots(),
+          builder: (BuildContext context,
+              AsyncSnapshot<DocumentSnapshot>snapshot) {
+            if (snapshot.hasData && snapshot.data != null) {
+              final userData = snapshot.data.data();
+              if (userData['type'] == "Student")
+                return Home();
+              else
+                return Club();
+            }
+            return Material(
+              child: Center(child: CircularProgressIndicator(),),);
+          }
+      );
   }
 }
