@@ -123,7 +123,7 @@ class _RegisterState extends State<Register> {
                       groupValue: _character,
                       onChanged: (SingingCharacter value) {
                         setState(() {
-                          type='Club member';
+                          type = 'Club member';
                           _character = value;
                         });
                       },
