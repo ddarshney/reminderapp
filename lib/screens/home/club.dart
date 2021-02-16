@@ -12,7 +12,7 @@ class Club extends StatelessWidget {
         value: DatabaseService().users,
         child:Scaffold(
           appBar: AppBar(
-            title: Text('REMIND ME APP'),
+            title: Text('CLUB'),
             backgroundColor: Colors.blue,
             elevation: 0.0,
             actions: <Widget>[

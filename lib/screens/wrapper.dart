@@ -23,9 +23,9 @@ class Wrapper extends StatelessWidget {
               AsyncSnapshot<DocumentSnapshot>snapshot) {
             if (snapshot.hasData && snapshot.data != null) {
               final userData = snapshot.data.data();
-              if (userData['type'] == "Student")
+              if (userData['groupvalue'] == "Student")
                 return Home();
-              else
+              else if (userData['groupvalue'] == "Club member")
                 return Club();
             }
             return Material(
