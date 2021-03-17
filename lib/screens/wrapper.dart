@@ -1,3 +1,5 @@
+import 'package:remindmeapp/screens/home/Club.dart';
+import 'package:remindmeapp/screens/home/Student/pages/student.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:remindmeapp/screens/authentication/authentication.dart';
@@ -5,7 +7,7 @@ import 'package:provider/provider.dart';
 // ignore: unused_import
 import 'package:remindmeapp/screens/home/home.dart';
 import 'package:remindmeapp/models/user_data.dart';
-import 'package:remindmeapp/screens/home/Club.dart';
+
 
 class Wrapper extends StatelessWidget {
   @override
@@ -24,7 +26,7 @@ class Wrapper extends StatelessWidget {
             if (snapshot.hasData && snapshot.data != null) {
               final userData = snapshot.data.data();
               if (userData['groupvalue'] == "Student")
-                return Home();
+                return Student();
               else if (userData['groupvalue'] == "Club member")
                 return Club();
             }

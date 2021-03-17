@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:remindmeapp/models/user_data.dart';
 import 'package:remindmeapp/screens/authentication/register.dart';
 import 'database.dart';
-
+import 'package:remindmeapp/screens/home/Student/pages/student.dart';
 class AuthService {
   //_ in the beginning means private prop
   final FirebaseAuth _auth = FirebaseAuth.instance;

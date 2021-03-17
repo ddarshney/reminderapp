@@ -8,6 +8,7 @@ class Club extends StatelessWidget {
   final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
+
     return StreamProvider<QuerySnapshot>.value(
         value: DatabaseService().users,
         child:Scaffold(

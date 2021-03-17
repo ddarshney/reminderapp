@@ -28,38 +28,38 @@ class _SignInState extends State<SignIn> {
           FlatButton.icon(
             icon: Icon(Icons.person),
             label: Text('SIGN UP',
-            style:TextStyle(fontWeight: FontWeight.bold,
+              style:TextStyle(fontWeight: FontWeight.bold,
 
-            ),),
+              ),),
             onPressed: () => widget.toggleView(),
           ),
         ],
       ),
       resizeToAvoidBottomPadding: false,
       body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-        Container(
-        child: Stack(
-          children: <Widget>[
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
           Container(
-            padding: EdgeInsets.fromLTRB(15.0, 100.0, 0.0, 0.0),
-            child: Text('Hello',
-            style: TextStyle(fontSize: 80.0, fontWeight: FontWeight.bold)),
-    ),
-          Container(
-          padding: EdgeInsets.fromLTRB(18.0, 175.0, 0.0, 0.0),
-            child: Text('There',
-            style: TextStyle(fontSize: 80.0, fontWeight: FontWeight.bold)),
-    ),
-          Container(
-            padding: EdgeInsets.fromLTRB(220.0, 175.0, 0.0, 0.0),
-            child: Text('.',
-              style: TextStyle(fontSize: 80.0,fontWeight: FontWeight.bold,color: Colors.green)),
-          )
-        ],
-      ),
-    ),
+            child: Stack(
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.fromLTRB(15.0, 100.0, 0.0, 0.0),
+                  child: Text('Hello',
+                      style: TextStyle(fontSize: 80.0, fontWeight: FontWeight.bold)),
+                ),
+                Container(
+                  padding: EdgeInsets.fromLTRB(18.0, 175.0, 0.0, 0.0),
+                  child: Text('There',
+                      style: TextStyle(fontSize: 80.0, fontWeight: FontWeight.bold)),
+                ),
+                Container(
+                  padding: EdgeInsets.fromLTRB(220.0, 175.0, 0.0, 0.0),
+                  child: Text('.',
+                      style: TextStyle(fontSize: 80.0,fontWeight: FontWeight.bold,color: Colors.green)),
+                )
+              ],
+            ),
+          ),
           Container(
             padding: EdgeInsets.only(top: 35.0, left: 20.0, right: 20.0),
             child: Form(
@@ -74,58 +74,58 @@ class _SignInState extends State<SignIn> {
                         icon: Icon(Icons.person),
                         labelText: 'E-MAIL',
                         labelStyle:TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.grey),
-    focusedBorder: UnderlineInputBorder(
-    borderSide: BorderSide(color: Colors.green))),
+                            fontWeight: FontWeight.bold, color: Colors.grey),
+                        focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.green))),
                     validator: (val) => val.isEmpty ? 'NO E-MAIL ID ENTERED' : null,
                     onChanged: (val) {
                       setState(() => email = val);
                     },
                   ),
-              SizedBox(height: 30.0),
-              TextFormField(
-                decoration: InputDecoration(
-                    icon: Icon(Icons.lock), labelText: 'PASSWORD',
-    labelStyle:TextStyle(
-    fontWeight: FontWeight.bold, color: Colors.grey),
-    focusedBorder: UnderlineInputBorder(
-    borderSide: BorderSide(color: Colors.green))),
-                obscureText: true,
-                validator: (val) => val.length < 6
-                    ? 'PASSWORD SHOULD HAVE 6 OR MORE CHARACTERS'
-                    : null,
-                onChanged: (val) {
-                  setState(() => password = val);
-                },
-              ),
-              SizedBox(height: 20.0),
-              RaisedButton(
-                  color: Colors.green,
-                  child: Text(
-                    'SIGN IN',
-                    style: TextStyle(color: Colors.white),
+                  SizedBox(height: 30.0),
+                  TextFormField(
+                    decoration: InputDecoration(
+                        icon: Icon(Icons.lock), labelText: 'PASSWORD',
+                        labelStyle:TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.grey),
+                        focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.green))),
+                    obscureText: true,
+                    validator: (val) => val.length < 6
+                        ? 'PASSWORD SHOULD HAVE 6 OR MORE CHARACTERS'
+                        : null,
+                    onChanged: (val) {
+                      setState(() => password = val);
+                    },
                   ),
-                  onPressed: () async {
-                    if (_formKey.currentState.validate()) {
-                      dynamic result =
-                      await _auth.signinwithemailpassword(email, password);
-                      if (result == null) {
-                        setState(() {
-                          error = 'ERROR SIGNING IN';
-                        });
-                      }
-                    }
-                  }),
+                  SizedBox(height: 20.0),
+                  RaisedButton(
+                      color: Colors.green,
+                      child: Text(
+                        'SIGN IN',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      onPressed: () async {
+                        if (_formKey.currentState.validate()) {
+                          dynamic result =
+                          await _auth.signinwithemailpassword(email, password);
+                          if (result == null) {
+                            setState(() {
+                              error = 'ERROR SIGNING IN';
+                            });
+                          }
+                        }
+                      }),
 
                   Text(
                     error,
                     style: TextStyle(color: Colors.red, fontSize: 15.0),
                   ),
-            ],
-          ),
-        ),
+                ],
+              ),
             ),
-            ],
+          ),
+        ],
       ),
     );
   }
