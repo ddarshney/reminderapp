@@ -18,8 +18,8 @@ There are 2 types of users.
 
 ● And when the user sign in, we use the information that we stored while signing up and check if the
 particular user is a student or a club and show the appropriate screens or details.
-**
-2. Features**
+
+**2. Features**
 The main idea of the app is that whenever any club posts the information (in this app) regarding the events or
 any other activities, the students who subscribed to that club should get a notification and also should be able
 to see the information regarding that post.
