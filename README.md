@@ -11,16 +11,15 @@ A few resources to get you started if this is your first Flutter project:
 - [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-1. Authentication
+**1. Authentication**
 There are 2 types of users. 
-1) Student ,
-2) Club.
+1) Student ,2) Club.
 ● While signing up we ask users whether they want to join as a student or as a club and store the details.
 
 ● And when the user sign in, we use the information that we stored while signing up and check if the
 particular user is a student or a club and show the appropriate screens or details.
-
-2. Features
+**
+2. Features**
 The main idea of the app is that whenever any club posts the information (in this app) regarding the events or
 any other activities, the students who subscribed to that club should get a notification and also should be able
 to see the information regarding that post.
